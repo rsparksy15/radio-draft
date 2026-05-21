@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Match the dark slate background of the app */
+html, body, #root {
+  background: #1F2937;
+  color: #E5E7EB;
+  font-family: 'Oswald', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* iOS safe-area inset support for PWA install */
+@supports (padding: max(0px)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Disable text selection on UI chrome to feel app-like */
+button { user-select: none; -webkit-user-select: none; }
+
+/* Subtle CSS-defined utility used by the app: flicker animation
+   for armed power-up indicators */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+.flicker { animation: flicker 1.4s ease-in-out infinite; }
+
+/* Prevent over-zoom on input focus on mobile */
+input, textarea, select { font-size: 16px; }
